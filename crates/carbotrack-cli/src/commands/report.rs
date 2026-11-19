@@ -16,6 +16,32 @@ pub fn print(report: &Report) {
     print!("{}", report.body);
 }
 
+pub fn as_json(report: &Report) -> String {
+    format!(
+        "{{\"format\":\"{:?}\",\"total_gco2e\":{:.6},\"record_count\":{},\"body\":{}}}",
+        report.format,
+        report.total_gco2e,
+        report.record_count,
+        json_escape(&report.body),
+    )
+}
+
+fn json_escape(input: &str) -> String {
+    let mut output = String::from("\"");
+    for ch in input.chars() {
+        match ch {
+            '"' => output.push_str("\\\""),
+            '\\' => output.push_str("\\\\"),
+            '\n' => output.push_str("\\n"),
+            '\r' => output.push_str("\\r"),
+            '\t' => output.push_str("\\t"),
+            c => output.push(c),
+        }
+    }
+    output.push('"');
+    output
+}
+
 pub fn value(args: &[String], key: &str) -> Option<String> {
     args.iter()
         .position(|arg| arg == key)
