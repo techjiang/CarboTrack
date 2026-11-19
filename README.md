@@ -25,7 +25,9 @@ cargo run -p carbotrack-cli -- demo
 cargo run -p carbotrack-cli -- report --format ghg-protocol
 cargo run -p carbotrack-cli -- export --format csv --output emissions.csv
 cargo run -p carbotrack-cli -- export --format report-json --output report.json
+cargo run -p carbotrack-cli -- export --format report-md --output report.md
 cargo run -p carbotrack-cli -- budget set --daily 500
+cargo run -p carbotrack-cli -- budget show
 cargo run -p carbotrack-cli -- dashboard --port 8080
 ```
 

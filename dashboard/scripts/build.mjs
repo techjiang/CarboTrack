@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const source = path.join(root, '..', 'dashboard');
+const source = root.endsWith('dashboard') ? root : path.join(root, 'dashboard');
 const dist = path.join(source, 'dist');
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
