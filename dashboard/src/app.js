@@ -3,6 +3,7 @@ const data = {
   compute: 0.3032 + 0.012633 + 0.000758,
   storage: 0.00379,
   network: 2.7288 + 0.56092,
+  cooling: (0.3032 + 0.012633 + 0.000758 + 0.00379) * 0.1,
   trend: [2.4, 3.1, 2.7, 4.4, 3.8, 4.1, 3.61],
   days: ['周一', '周二', '周三', '周四', '周五', '周六', '今天'],
 };
@@ -27,6 +28,7 @@ const parts = [
   { label: '计算', value: data.compute, color: '#57e39b' },
   { label: '存储', value: data.storage, color: '#f2cc66' },
   { label: '网络', value: data.network, color: '#64b5f6' },
+  { label: '冷却', value: data.cooling, color: '#ff9f7a' },
 ];
 const sum = parts.reduce((acc, p) => acc + p.value, 0);
 let cursor = 0;
@@ -48,8 +50,8 @@ document.getElementById('hotspots').innerHTML = hotspots.map((h) => `
   <div class="bar-row"><span>${h.name}</span><div class="track"><div class="fill" style="width:${(h.value / hotspots[0].value) * 100}%"></div></div><b>${format(h.value)} g</b></div>
 `).join('');
 
-const snapshot = new Date('2026-11-19T13:30:49Z');
-document.getElementById('cooling-ratio').textContent = `${((data.compute + data.storage + data.cooling > 0 ? data.cooling / (data.compute + data.storage + data.network) : 0) * 100).toFixed(1)}%`;
+const snapshot = new Date('2026-11-19T13:41:00Z');
+document.getElementById('cooling-ratio').textContent = `${((data.compute + data.storage + data.cooling > 0 ? data.cooling / data.total : 0) * 100).toFixed(1)}%`;
 document.getElementById('snapshot-time').textContent = snapshot.toLocaleString('zh-CN', { hour12: false });
 
 const suggestions = [
