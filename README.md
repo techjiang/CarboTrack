@@ -31,7 +31,13 @@ cargo run -p carbotrack-cli -- budget show
 cargo run -p carbotrack-cli -- dashboard --port 8080
 ```
 
-`dashboard` 会启动一个本地静态面板，展示总碳排、趋势、构成、预算、热点与冷却占比；生产构建位于 `dashboard/dist`。
+`dashboard` 会启动一个本地静态面板，展示总碳排、趋势、构成、预算、热点与冷却占比；冷却占比按“冷却排放 / 总排放”计算，生产构建位于 `dashboard/dist`。
+
+本地校验面板产物一致性：
+
+```bash
+node dashboard/scripts/verify.mjs
+```
 
 ## 目录结构
 

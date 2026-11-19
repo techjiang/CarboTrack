@@ -55,3 +55,17 @@ fn hotspot_analysis_reports_highest_operation_first() {
     let hotspots = analyze(&tracker.records());
     assert_eq!(hotspots[0].operation, "large");
 }
+
+#[test]
+fn cooling_ratio_uses_total_emissions() {
+    let emission = carbotrack_core::carbon::calculate(
+        &Operation::Compute {
+            operation: "api".into(),
+            duration_ms: 60_000.0,
+            cores: 2,
+        },
+        CarbonIntensity::USA,
+        Default::default(),
+    );
+    assert!((emission.cooling_ratio() - 0.0909).abs() < 0.001);
+}
