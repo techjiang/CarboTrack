@@ -10,7 +10,9 @@ pub fn set(args: &[String]) -> Result<(), String> {
 
 pub fn show(tracker: &CarboTrack) {
     let breakdown = tracker.total_breakdown();
+    let budget = tracker.config().budget_gco2e_per_day.unwrap_or(0.0);
     println!("当前碳排: {:.6} gCO2e", breakdown.total());
+    println!("日碳预算: {:.2} gCO2e", budget);
     if tracker.budget_exceeded() {
         println!("预算状态: 已超标");
     } else {

@@ -6,6 +6,7 @@ mod serve;
 
 pub use budget::set as budget_set;
 pub use budget::show as budget_show;
+pub use budget::show as budget_show;
 pub use demo::run as demo;
 pub use export::run as export;
 pub use report::run as report;
