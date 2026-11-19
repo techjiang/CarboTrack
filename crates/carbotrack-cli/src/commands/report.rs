@@ -21,6 +21,7 @@ pub fn print_breakdown(breakdown: &EmissionBreakdown) {
     for (name, value) in breakdown.by_category() {
         println!("  {name}: {value:.6} gCO2e");
     }
+    println!("  冷却排放: {:.6} gCO2e", breakdown.cooling);
     println!("  冷却占比: {:.1}%", breakdown.cooling_ratio() * 100.0);
 }
 
