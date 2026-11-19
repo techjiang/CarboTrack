@@ -24,3 +24,7 @@ println!("{:?}", tracker.total_breakdown());
 - M2: 多语言绑定、框架集成、CLI、碳预算告警
 - M3: 可视化面板、热点分析、合规报告
 - M4: 文档、多平台构建与发布
+
+# CarboTrack
+
+M1 implementation PR.
