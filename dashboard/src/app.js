@@ -48,5 +48,15 @@ document.getElementById('hotspots').innerHTML = hotspots.map((h) => `
   <div class="bar-row"><span>${h.name}</span><div class="track"><div class="fill" style="width:${(h.value / hotspots[0].value) * 100}%"></div></div><b>${format(h.value)} g</b></div>
 `).join('');
 
-const snapshot = new Date('2026-11-19T13:19:56Z');
+const snapshot = new Date('2026-11-19T13:26:49Z');
 document.getElementById('snapshot-time').textContent = snapshot.toLocaleString('zh-CN', { hour12: false });
+
+const suggestions = [
+  { title: '优化跨区同步', detail: '减少 1.2 GB 非必要跨区传输，预计可降低约 75% 网络排放。' },
+  { title: '使用低碳区域', detail: '将上传与同步任务迁移至碳强度更低的区域。' },
+  { title: '降低 GPU 空转', detail: '缩短 API 请求运行时长，优先复用连接与结果缓存。' },
+  { title: '导出合规报告', detail: '使用 Markdown 或 JSON 报告导出，接入 CI 做预算门禁。' },
+];
+document.querySelector('.suggestions').innerHTML = suggestions.map((item, index) => `
+  <div><span>${String(index + 1).padStart(2, '0')}</span><p><b>${item.title}</b><br />${item.detail}</p></div>
+`).join('');

@@ -8,9 +8,9 @@ pub struct Suggestion {
 pub fn suggest(hotspots: &[Hotspot]) -> Vec<Suggestion> {
     hotspots
         .iter()
-        .take(3)
+        .take(4)
         .map(|h| Suggestion {
-            message: format!("优化高频操作「{}」以降低碳排放", h.operation),
+            message: format!("优先优化高频操作「{}」以降低碳排放", h.operation),
         })
         .collect()
 }
