@@ -21,9 +21,6 @@ pub fn run() -> Result<(), String> {
 
     let hotspots = carbotrack_core::analysis::analyze(&tracker.records());
     let suggestions = carbotrack_core::analysis::suggest(&hotspots);
-    println!("减排建议:");
-    for (index, suggestion) in suggestions.iter().enumerate() {
-        println!("  {}. {}", index + 1, suggestion.message);
-    }
+    println!("减排建议:\n{}", carbotrack_core::analysis::summary(&suggestions));
     Ok(())
 }

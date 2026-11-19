@@ -43,7 +43,7 @@ fn print_help() {
     println!("用法:");
     println!("  carbotrack demo                                     生成演示数据");
     println!("  carbotrack report [--format ghg-protocol|iso-14064] 生成碳排报告");
-    println!("  carbotrack export --format json|csv|report-json [--output FILE] 导出记录");
+    println!("  carbotrack export --format json|csv|report-json|report-md [--output FILE] 导出记录");
     println!("  carbotrack budget set --daily GRAMS                 设置日碳预算");
     println!("  carbotrack dashboard [--port PORT]                  启动本地面板");
     println!("  carbotrack serve [--port PORT] [--host HOST]        启动静态面板服务");

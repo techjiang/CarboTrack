@@ -11,6 +11,7 @@ pub fn run(args: &[String]) -> Result<(), String> {
         "json" => write_json(&tracker, output.as_deref()),
         "csv" => write_csv(&tracker, output.as_deref()),
         "report-json" => write_report_json(&tracker, output.as_deref()),
+        "report-md" => write_report_markdown(&tracker, output.as_deref()),
         other => Err(format!("不支持的导出格式: {other}")),
     }
 }
@@ -18,6 +19,11 @@ pub fn run(args: &[String]) -> Result<(), String> {
 pub fn write_report_json(tracker: &CarboTrack, output: Option<&str>) -> Result<(), String> {
     let report = tracker.report(carbotrack_core::ReportFormat::GhgProtocol, 0, u128::MAX);
     write(output, crate::commands::report::as_json(&report))
+}
+
+pub fn write_report_markdown(tracker: &CarboTrack, output: Option<&str>) -> Result<(), String> {
+    let report = tracker.report(carbotrack_core::ReportFormat::GhgProtocol, 0, u128::MAX);
+    write(output, crate::commands::report::as_markdown(&report))
 }
 
 fn write(output: Option<&str>, content: String) -> Result<(), String> {

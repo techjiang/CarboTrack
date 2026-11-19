@@ -16,6 +16,23 @@ pub fn print(report: &Report) {
     print!("{}", report.body);
 }
 
+pub fn as_markdown(report: &Report) -> String {
+    format!(
+        "# {}\n\n- 总碳排: {:.4} gCO2e\n- 记录数: {}\n\n{}",
+        report_title(report),
+        report.total_gco2e,
+        report.record_count,
+        report.body.trim_end()
+    )
+}
+
+pub fn report_title(report: &Report) -> &'static str {
+    match report.format {
+        ReportFormat::GhgProtocol => "GHG Protocol Emission Report",
+        ReportFormat::Iso14064 => "ISO 14064 Emission Report",
+    }
+}
+
 pub fn as_json(report: &Report) -> String {
     format!(
         "{{\"format\":\"{:?}\",\"total_gco2e\":{:.6},\"record_count\":{},\"body\":{}}}",
