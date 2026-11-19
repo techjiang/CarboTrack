@@ -14,3 +14,15 @@ pub fn suggest(hotspots: &[Hotspot]) -> Vec<Suggestion> {
         })
         .collect()
 }
+
+pub fn summary(suggestions: &[Suggestion]) -> String {
+    if suggestions.is_empty() {
+        return "当前碳排较低，暂无高优减排项".into();
+    }
+    suggestions
+        .iter()
+        .enumerate()
+        .map(|(index, item)| format!("{}. {}", index + 1, item.message))
+        .collect::<Vec<_>>()
+        .join("\n")
+}
