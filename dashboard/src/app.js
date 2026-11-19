@@ -48,7 +48,8 @@ document.getElementById('hotspots').innerHTML = hotspots.map((h) => `
   <div class="bar-row"><span>${h.name}</span><div class="track"><div class="fill" style="width:${(h.value / hotspots[0].value) * 100}%"></div></div><b>${format(h.value)} g</b></div>
 `).join('');
 
-const snapshot = new Date('2026-11-19T13:26:49Z');
+const snapshot = new Date('2026-11-19T13:30:49Z');
+document.getElementById('cooling-ratio').textContent = `${((data.compute + data.storage + data.cooling > 0 ? data.cooling / (data.compute + data.storage + data.network) : 0) * 100).toFixed(1)}%`;
 document.getElementById('snapshot-time').textContent = snapshot.toLocaleString('zh-CN', { hour12: false });
 
 const suggestions = [
