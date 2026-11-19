@@ -128,20 +128,10 @@ impl CarboTrack {
             .expect("storage lock poisoned")
             .all()
             .iter()
-            .fold(
-                EmissionBreakdown {
-                    compute: 0.0,
-                    storage: 0.0,
-                    network: 0.0,
-                    cooling: 0.0,
-                },
-                |acc, r| EmissionBreakdown {
-                    compute: acc.compute + r.breakdown.compute,
-                    storage: acc.storage + r.breakdown.storage,
-                    network: acc.network + r.breakdown.network,
-                    cooling: acc.cooling + r.breakdown.cooling,
-                },
-            )
+            .fold(EmissionBreakdown::zero(), |mut acc, r| {
+                acc.add_assign(r.breakdown);
+                acc
+            })
     }
 
     pub fn budget_exceeded(&self) -> bool {

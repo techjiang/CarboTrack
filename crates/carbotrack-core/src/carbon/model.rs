@@ -55,8 +55,24 @@ pub struct EmissionBreakdown {
 }
 
 impl EmissionBreakdown {
+    pub fn zero() -> Self {
+        Self {
+            compute: 0.0,
+            storage: 0.0,
+            network: 0.0,
+            cooling: 0.0,
+        }
+    }
+
     pub fn total(&self) -> f64 {
         self.compute + self.storage + self.network + self.cooling
+    }
+
+    pub fn add_assign(&mut self, other: Self) {
+        self.compute += other.compute;
+        self.storage += other.storage;
+        self.network += other.network;
+        self.cooling += other.cooling;
     }
 }
 
