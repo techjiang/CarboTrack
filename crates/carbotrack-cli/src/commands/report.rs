@@ -1,4 +1,4 @@
-use carbotrack_core::{Report, ReportFormat};
+use carbotrack_core::{EmissionBreakdown, Report, ReportFormat};
 
 pub fn run(args: &[String]) -> Result<(), String> {
     let tracker = crate::commands::demo_tracker();
@@ -14,6 +14,13 @@ pub fn run(args: &[String]) -> Result<(), String> {
 
 pub fn print(report: &Report) {
     print!("{}", report.body);
+}
+
+pub fn print_breakdown(breakdown: &EmissionBreakdown) {
+    println!("碳排构成:");
+    for (name, value) in breakdown.by_category() {
+        println!("  {name}: {value:.6} gCO2e");
+    }
 }
 
 pub fn as_markdown(report: &Report) -> String {
