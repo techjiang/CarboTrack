@@ -84,12 +84,16 @@ impl EmissionBreakdown {
         self.cooling += other.cooling;
     }
 
+    pub fn cooling_emissions(&self) -> f64 {
+        self.cooling
+    }
+
     pub fn cooling_ratio(&self) -> f64 {
         let total = self.total();
         if total == 0.0 {
             0.0
         } else {
-            self.cooling / total
+            self.cooling_emissions() / total
         }
     }
 }

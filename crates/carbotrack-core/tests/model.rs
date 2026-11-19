@@ -67,5 +67,6 @@ fn cooling_ratio_uses_total_emissions() {
         CarbonIntensity::USA,
         Default::default(),
     );
+    assert!((emission.cooling_emissions() - 0.0330).abs() < 0.001);
     assert!((emission.cooling_ratio() - 0.0909).abs() < 0.001);
 }
