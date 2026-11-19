@@ -1,0 +1,13 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/carbotrack-core",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2021"
+license = "Apache-2.0"
+authors = ["科技酱 <official@tech.asoe.cn>"]
+repository = "https://cnb.cool/asoe/TechSauce/CarboTrack"
+homepage = "https://www.asoe.cn"
