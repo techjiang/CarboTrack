@@ -83,6 +83,15 @@ impl EmissionBreakdown {
         self.network += other.network;
         self.cooling += other.cooling;
     }
+
+    pub fn cooling_ratio(&self) -> f64 {
+        let direct = self.compute + self.storage + self.network;
+        if direct == 0.0 {
+            0.0
+        } else {
+            self.cooling / direct
+        }
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
