@@ -16,6 +16,7 @@ fn main() -> ExitCode {
         "export" => commands::export(&collect(args)),
         "budget" => commands::budget_set(&collect(args)),
         "dashboard" => commands::dashboard(&collect(args)),
+        "serve" => commands::serve(&collect(args)),
         "help" | "--help" | "-h" => {
             print_help();
             Ok(())
@@ -45,4 +46,5 @@ fn print_help() {
     println!("  carbotrack export --format json|csv [--output FILE] 导出记录");
     println!("  carbotrack budget set --daily GRAMS                 设置日碳预算");
     println!("  carbotrack dashboard [--port PORT]                  启动本地面板");
+    println!("  carbotrack serve [--port PORT] [--host HOST]        启动静态面板服务");
 }

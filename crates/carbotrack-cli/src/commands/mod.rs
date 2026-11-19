@@ -10,6 +10,7 @@ pub use demo::run as demo;
 pub use export::run as export;
 pub use report::run as report;
 pub use serve::run as dashboard;
+pub use serve::serve_only;
 
 use carbotrack_core::{CarboTrack, CarboTrackConfig};
 

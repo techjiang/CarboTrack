@@ -7,10 +7,15 @@ use std::process::Command;
 pub fn run(args: &[String]) -> Result<(), String> {
     let port = value(args, "--port").unwrap_or_else(|| "8080".into());
     let port: u16 = port.parse().map_err(|_| "端口必须是数字")?;
+    let host = value(args, "--host").unwrap_or_else(|| "127.0.0.1".into());
+    serve_only(&host, port)
+}
+
+pub fn serve_only(host: &str, port: u16) -> Result<(), String> {
     let dist = dashboard_dir()?;
     let listener =
-        TcpListener::bind(("127.0.0.1", port)).map_err(|e| format!("端口 {port} 启动失败: {e}"))?;
-    let url = format!("http://127.0.0.1:{port}");
+        TcpListener::bind((host, port)).map_err(|e| format!("端口 {port} 启动失败: {e}"))?;
+    let url = format!("http://{host}:{port}");
     println!("CarboTrack dashboard: {url}");
 
     if open_browser(&url) {
