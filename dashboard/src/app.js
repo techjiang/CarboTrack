@@ -47,3 +47,6 @@ const hotspots = [
 document.getElementById('hotspots').innerHTML = hotspots.map((h) => `
   <div class="bar-row"><span>${h.name}</span><div class="track"><div class="fill" style="width:${(h.value / hotspots[0].value) * 100}%"></div></div><b>${format(h.value)} g</b></div>
 `).join('');
+
+const snapshot = new Date('2026-11-19T13:19:56Z');
+document.getElementById('snapshot-time').textContent = snapshot.toLocaleString('zh-CN', { hour12: false });
