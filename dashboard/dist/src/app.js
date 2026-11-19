@@ -50,7 +50,7 @@ document.getElementById('hotspots').innerHTML = hotspots.map((h) => `
   <div class="bar-row"><span>${h.name}</span><div class="track"><div class="fill" style="width:${(h.value / hotspots[0].value) * 100}%"></div></div><b>${format(h.value)} g</b></div>
 `).join('');
 
-const snapshot = new Date('2026-11-19T13:41:00Z');
+const snapshot = new Date('2026-11-19T13:45:00Z');
 document.getElementById('cooling-ratio').textContent = `${((data.cooling / data.total) * 100).toFixed(1)}%`;
 document.getElementById('snapshot-time').textContent = snapshot.toLocaleString('zh-CN', { hour12: false });
 
