@@ -42,5 +42,5 @@ cargo run -p carbotrack-cli -- dashboard --port 8080
 
 - M1 ✅ Rust 核心模型、追踪器、本地存储、碳强度数据库
 - M2 ✅ CLI、JSON/CSV 导出、预算命令、本地可视化面板、框架示例
-- M3 多语言原生绑定、热点建议 UI 联动、合规报告文件导出
+- M3 多语言原生绑定、合规报告文件导出、SQLite 持久化
 - M4 文档、多平台构建与发布

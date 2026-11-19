@@ -18,5 +18,12 @@ pub fn run() -> Result<(), String> {
     budget_show(&tracker);
     report::print(&tracker.report(ReportFormat::GhgProtocol, 0, u128::MAX));
     export::write_json(&tracker, None)?;
+
+    let hotspots = carbotrack_core::analysis::analyze(&tracker.records());
+    let suggestions = carbotrack_core::analysis::suggest(&hotspots);
+    println!("减排建议:");
+    for (index, suggestion) in suggestions.iter().enumerate() {
+        println!("  {}. {}", index + 1, suggestion.message);
+    }
     Ok(())
 }
