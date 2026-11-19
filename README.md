@@ -31,7 +31,7 @@ cargo run -p carbotrack-cli -- budget show
 cargo run -p carbotrack-cli -- dashboard --port 8080
 ```
 
-`dashboard` 会启动一个本地静态面板；生产构建位于 `dashboard/dist`。
+`dashboard` 会启动一个本地静态面板，展示总碳排、趋势、构成、预算、热点与冷却占比；生产构建位于 `dashboard/dist`。
 
 ## 目录结构
 
@@ -43,6 +43,6 @@ cargo run -p carbotrack-cli -- dashboard --port 8080
 ## 路线图
 
 - M1 ✅ Rust 核心模型、追踪器、本地存储、碳强度数据库
-- M2 ✅ CLI、JSON/CSV/报告导出、预算状态、本地可视化面板、框架示例
+- M2 ✅ CLI、JSON/CSV/报告导出、预算状态、冷却占比、本地可视化面板、框架示例
 - M3 多语言原生绑定、合规报告文件导出、SQLite 持久化
 - M4 文档、多平台构建与发布
