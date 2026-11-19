@@ -51,7 +51,7 @@ document.getElementById('hotspots').innerHTML = hotspots.map((h) => `
 `).join('');
 
 const snapshot = new Date('2026-11-19T13:41:00Z');
-document.getElementById('cooling-ratio').textContent = `${((data.compute + data.storage + data.cooling > 0 ? data.cooling / data.total : 0) * 100).toFixed(1)}%`;
+document.getElementById('cooling-ratio').textContent = `${((data.cooling / data.total) * 100).toFixed(1)}%`;
 document.getElementById('snapshot-time').textContent = snapshot.toLocaleString('zh-CN', { hour12: false });
 
 const suggestions = [
