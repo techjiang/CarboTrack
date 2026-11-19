@@ -68,6 +68,15 @@ impl EmissionBreakdown {
         self.compute + self.storage + self.network + self.cooling
     }
 
+    pub fn by_category(&self) -> [(&'static str, f64); 4] {
+        [
+            ("compute", self.compute),
+            ("storage", self.storage),
+            ("network", self.network),
+            ("cooling", self.cooling),
+        ]
+    }
+
     pub fn add_assign(&mut self, other: Self) {
         self.compute += other.compute;
         self.storage += other.storage;
