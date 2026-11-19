@@ -11,4 +11,13 @@ for (const file of files) {
   const built = fs.readFileSync(path.join(dist, file), 'utf8');
   if (src !== built) throw new Error(`dist out of sync: ${file}`);
 }
-console.log('dashboard dist verified');
+const app = fs.readFileSync(path.join(source, 'src/app.js'), 'utf8');
+const required = [
+  'const snapshot = new Date(',
+  "document.getElementById('cooling-ratio')",
+  "document.getElementById('snapshot-time')",
+];
+for (const token of required) {
+  if (!app.includes(token)) throw new Error(`dashboard app missing: ${token}`);
+}
+console.log('dashboard dist and snapshot data verified');
