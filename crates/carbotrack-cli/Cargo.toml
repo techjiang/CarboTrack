@@ -1,0 +1,16 @@
+[package]
+name = "carbotrack-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Command line tools for CarboTrack"
+
+[[bin]]
+name = "carbotrack"
+path = "src/main.rs"
+
+[dependencies]
+carbotrack-core = { path = "../carbotrack-core" }

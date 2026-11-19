@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarboTrack · 碳排放仪表盘</title>
+  <link rel="stylesheet" href="./styles/main.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark">C</div>
+        <div>
+          <h1>CarboTrack</h1>
+          <p>给你的代码装上碳表</p>
+        </div>
+      </div>
+      <div class="status"><span class="dot"></span> 本地实时数据 · AWS us-east-1</div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Carbon Emission Dashboard</p>
+        <h2>今天，你的代码<br /><span>排了多少碳？</span></h2>
+        <p class="lead">基于 M2 CLI 演示数据生成的可视化快照。所有数据仅保存在本地。</p>
+      </div>
+      <div class="hero-card">
+        <span>今日总碳排</span>
+        <strong id="total-emission">0.0000</strong>
+        <em>gCO₂e</em>
+        <div class="trend">较昨日 <b>−12.4%</b></div>
+      </div>
+    </section>
+
+    <section class="cards">
+      <article class="card accent"><span>计算碳排</span><strong id="compute-emission">0</strong><small>gCO₂e</small></article>
+      <article class="card"><span>存储碳排</span><strong id="storage-emission">0</strong><small>gCO₂e</small></article>
+      <article class="card"><span>网络碳排</span><strong id="network-emission">0</strong><small>gCO₂e</small></article>
+      <article class="card"><span>预算使用</span><strong id="budget-used">0%</strong><small>5.00 gCO₂e / 天</small></article>
+    </section>
+
+    <section class="panels">
+      <article class="panel chart-panel">
+        <div class="panel-head"><div><h3>碳排趋势</h3><p>近 7 日 gCO₂e</p></div><div class="tabs"><button class="active">7D</button><button>30D</button><button>90D</button></div></div>
+        <div id="trend-chart" class="chart"></div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div><h3>排放构成</h3><p>按来源拆分</p></div></div>
+        <div id="donut" class="donut"></div>
+        <ul id="legend" class="legend"></ul>
+      </article>
+    </section>
+
+    <section class="panels lower">
+      <article class="panel">
+        <div class="panel-head"><div><h3>热点分析</h3><p>碳排最高的操作</p></div></div>
+        <div id="hotspots" class="bars"></div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div><h3>减排建议</h3><p>基于当前热点生成</p></div></div>
+        <div class="suggestions">
+          <div><span>01</span><p><b>优化跨区同步</b><br />减少 1.2 GB 非必要跨区传输，预计可降低约 75% 网络排放。</p></div>
+          <div><span>02</span><p><b>使用低碳区域</b><br />将上传与同步任务迁移至碳强度更低的区域。</p></div>
+          <div><span>03</span><p><b>降低 GPU 空转</b><br />缩短 API 请求运行时长，优先复用连接与结果缓存。</p></div>
+        </div>
+      </article>
+    </section>
+
+    <footer>CarboTrack 1.0.0 · Apache 2.0 · 科技酱 · <a href="https://www.asoe.cn">asoe.cn</a></footer>
+  </div>
+  <script src="./src/app.js"></script>
+</body>
+</html>
